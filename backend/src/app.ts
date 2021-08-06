@@ -32,7 +32,7 @@ const statdir = path.join(__dirname, 'dist');
 console.log('static', statdir);
 app.use(express.static(statdir));
 
-app.get('**', (req, res) => {
+app.get('**', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'dist/fe/index.html'));
 });
 
@@ -42,19 +42,20 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 });
 
 // error handler
-app.use(function (
+app.use( (
   err: { message: any; status: any },
   req: Request,
   res: Response,
   next: NextFunction
-) {
+) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  // res.status(err.status || 500);
+  // res.render('error');
+  res.sendFile(path.join(__dirname, 'dist/fe/index.html'));
 });
 
 // DB Connection
