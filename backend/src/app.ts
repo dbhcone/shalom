@@ -1,10 +1,10 @@
 var createError = require('http-errors');
 
-var path = require('path');
+import path from 'path';
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+import { indexRouter } from './routes/index';
 import mongoose from 'mongoose';
 import config from 'config';
 import express, { NextFunction, Request, Response } from 'express';
@@ -29,7 +29,7 @@ app.use('/api/auth', authRouter);
 
 // serve only the static files from the dist directory
 const statdir = path.join(__dirname, 'dist');
-console.log('static', statdir)
+console.log('static', statdir);
 app.use(express.static(statdir));
 
 app.get('**', (req, res) => {
