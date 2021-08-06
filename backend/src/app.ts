@@ -28,10 +28,12 @@ app.use('/', indexRouter);
 app.use('/api/auth', authRouter);
 
 // serve only the static files from the dist directory
-app.use(express.static('./dist/fe'));
+const statdir = path.join(__dirname, 'dist');
+console.log('static', statdir)
+app.use(express.static(statdir));
 
-app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: 'dist/fe/' });
+app.get('**', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/fe/index.html'));
 });
 
 // catch 404 and forward to error handler
