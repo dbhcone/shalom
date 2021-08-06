@@ -1,0 +1,5 @@
+{
+    "CONN_STR_LOC": "mongodb://localhost:27017/shalom",
+    "CONN_STR": "mongodb+srv://user-shalom-osa:BRsXFm5klPIqoKYQ@cluster-shalom-osa.vhqtf.mongodb.net/shalomosa?retryWrites=true&w=majority",
+    "JWT_SECRET": "TheQu1ckBrownFoxJumped0verTheL@zyDog$"
+}

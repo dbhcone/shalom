@@ -1,0 +1,52 @@
+
+    <div class="container h-100 bg-success">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-md-12">
+                <h1 class="text-white text-center">SHALOM INTERNATIONAL SCHOOL</h1>
+                <h3 class="text-white text-center">OLD STUDENTS - 2010 BATCH</h3>
+                <mat-card>
+            <mat-card-header>
+                <mat-card-title class="text-center">Login</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+        <form autocomplete="off" class="small-text" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+            
+            <!-- Username -->
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input autocomplete="off" matInput type="text" name="username" formControlName="username" placeholder="enter your username" required />
+                <mat-error *ngIf="username?.valid && (username?.dirty ||username?.touched)">
+                    <!-- <div [hidden]="!username.errors.required"> -->
+                      username is required
+                    <!-- </div> -->
+                </mat-error>
+            </mat-form-field>
+
+
+            <!-- Password -->
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" formControlName="password" placeholder="enter your password" required />
+                <mat-error *ngIf="password != null && !password.valid && (password.dirty ||password.touched)">
+                    <!-- <div [hidden]="!password.errors.required"> -->
+                      password is required
+                    <!-- </div> -->
+                </mat-error>
+            </mat-form-field>
+
+            <!-- isAdmin Checkbox -->
+            <div>
+                <input type="checkbox" name="isAdmin" id="isAdmin" formControlName="isAdmin">
+                <label for="isAdmin">Is Admin?</label>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button class="btn btn-block" mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">LOGIN</button>
+            </div>
+        </form>
+    </mat-card-content>
+        </mat-card>
+        </div>
+    </div>
+    </div>

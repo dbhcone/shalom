@@ -1,0 +1,97 @@
+<h2 mat-dialog-title>
+    Add Member Details <span mat-dialog-close>&times;</span>
+  </h2>
+  
+
+<form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content class="mat-typography">
+    <div formGroupName="account" class="block">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="email address" required />
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Surname</mat-label>
+            <input matInput type="text" formControlName="surname" placeholder="enter surname" required (keyup)="handleUsernameSuggestion()"/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="firstName" placeholder="enter first name" required (keyup)="handleUsernameSuggestion()" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Other Names </mat-label>
+            <input matInput type="text" formControlName="otherNames" placeholder="other names" (keyup)="handleUsernameSuggestion()" />
+        </mat-form-field>
+
+
+        <div>
+            <p>
+                <label for="gender">Gender </label>
+                <input type="radio" value="Male" name="gender" formControlName="gender"> Male
+                <input type="radio" value="Female" name="gender" formControlName="gender"> Female
+            </p>
+        </div>
+        <mat-form-field>
+            <mat-label>Occupation</mat-label>
+            <input matInput type="text" formControlName="occupation" placeholder="enter occupation" />
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Primary Mobile Number</mat-label>
+            <input matInput type="tel" formControlName="primaryMobileNumber" placeholder="enter number" required />
+        </mat-form-field>
+
+    </div>
+
+
+    <!-- User credentials -->
+
+    <div formGroupName="user" class="block">
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput (change)="onUsernameChange($event)" type="text" formControlName="username" placeholder="username" required>
+        </mat-form-field>
+       
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="username" required>
+        </mat-form-field>
+       
+        <mat-form-field appearance="outline">
+            <mat-label>Select an option</mat-label>
+            <mat-select
+              (selectionChange)="onRoleChanged($event)"
+              formControlName="role"
+            >
+              <mat-option
+                *ngFor="let role of roles"
+                [value]="role.id"
+               
+                >{{ role.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+    </div>
+
+
+</mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+        <button
+          mat-raised-button
+          color="primary"
+          [mat-dialog-close]="memberForm.value"
+          cdkFocusInitial
+          type="submit"
+          [disabled]="!this.memberForm.valid"
+        >
+          Save
+        </button>
+      </mat-dialog-actions>
+
+</form>

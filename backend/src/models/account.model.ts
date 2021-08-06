@@ -1,0 +1,16 @@
+import mongoose, {Schema} from 'mongoose';
+import { IAccount } from '../interfaces/account.interface';
+
+
+const AccountSchema: Schema = new Schema ({
+    email: {type: String},
+    surname: { type: String, required: true },
+    firstName: { type: String, required: true },
+    otherNames: { type: String },
+    gender: { type: String, required: true },
+    primaryMobileNumber: { type: String, required: true },
+    otherNumbers: [{type:String}],
+    occupation: { type: String }
+})
+
+export default mongoose.model<IAccount>('Accounts', AccountSchema);
