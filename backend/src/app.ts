@@ -33,7 +33,7 @@ console.log('static', statdir);
 app.use(express.static(statdir));
 
 app.get('**', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, 'dist/fe/index.html'));
+  res.sendFile(path.join(__dirname, 'fe/index.html'));
 });
 
 // catch 404 and forward to error handler
@@ -55,7 +55,7 @@ app.use( (
   // render the error page
   // res.status(err.status || 500);
   // res.render('error');
-  res.sendFile(path.join(__dirname, 'dist/fe/index.html'));
+  res.sendFile(path.join(__dirname, 'fe/index.html'));
 });
 
 // DB Connection
