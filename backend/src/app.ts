@@ -33,10 +33,10 @@ app.use('/api/auth', authRouter);
 // app.use(express.static(statdir));
 
 // serve only the static files from the dist directory
-app.use(express.static('../../dist/fe'));
+app.use(express.static(path.join(__dirname, '../../dist/fe')));
 
 app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: '../../dist/fe/' });
+  res.sendFile(path.join(__dirname, '../../dist/fe/' ));
 });
 
 // Start the app by listening on the default Heroku port
