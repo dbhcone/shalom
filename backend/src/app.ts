@@ -28,12 +28,12 @@ app.use(cookieParser());
 app.use('/api/auth', authRouter);
 
 // serve only the static files from the dist directory
-const statdir = path.join(__dirname, 'dist');
-console.log('static', statdir);
-app.use(express.static(statdir));
+// const statdir = path.join(__dirname, 'dist');
+// console.log('static', statdir);
+// app.use(express.static(statdir));
 
 // serve only the static files from the dist directory
-app.use(express.static('./fe'));
+app.use(express.static('../dist/fe'));
 
 app.get('/*', (req, res) => {
 	res.sendFile('index.html', {root: 'fe/'});
