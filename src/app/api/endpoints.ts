@@ -6,9 +6,9 @@ const Auth = {
 }
 
 const Payment = {
-    all: 'payments',
-    some: 'payments',
-    one: 'payment'
+    all: '/payments',
+    some: '/payments',
+    one: '/payment'
 }
 
 export {Auth, Payment};
