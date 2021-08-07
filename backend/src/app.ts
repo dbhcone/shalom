@@ -36,14 +36,14 @@ app.use('/api/auth', authRouter);
 app.use(express.static('../dist/fe'));
 
 app.get('/*', (req, res) => {
-	res.sendFile('index.html', {root: 'fe/'});
+  res.sendFile('index.html', { root: 'fe/' });
 });
 
 // Start the app by listening on the default Heroku port
 const port = process.env.PORT || 8080;
 app.listen(port);
 app.on('listening', () => {
-	console.log('App has started on port: ', port);
+  console.log('App has started on port: ', port);
 });
 
 // catch 404 and forward to error handler
@@ -52,21 +52,25 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 });
 
 // error handler
-app.use( (
-  err: { message: any; status: any },
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(
+  (
+    err: { message: any; status: any },
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  // res.status(err.status || 500);
-  // res.render('error');
-  res.sendFile(path.join(__dirname, 'fe/index.html'));
-});
+    // render the error page
+    // res.status(err.status || 500);
+    // res.render('error');
+    // res.sendFile(path.join(__dirname, 'fe/index.html'));
+    console.log('Error thrown by error handler');
+    res.sendFile('index.html', { root: 'fe/' });
+  }
+);
 
 // DB Connection
 try {
