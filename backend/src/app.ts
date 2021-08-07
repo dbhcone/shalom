@@ -33,10 +33,10 @@ app.use('/api/auth', authRouter);
 // app.use(express.static(statdir));
 
 // serve only the static files from the dist directory
-app.use(express.static('../dist/fe'));
+app.use(express.static('../../dist/fe'));
 
 app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: 'fe/' });
+  res.sendFile('index.html', { root: '../../dist/fe/' });
 });
 
 // Start the app by listening on the default Heroku port
@@ -67,8 +67,8 @@ app.use(
     // res.status(err.status || 500);
     // res.render('error');
     // res.sendFile(path.join(__dirname, 'fe/index.html'));
-    console.log('Error thrown by error handler');
-    res.sendFile('index.html', { root: 'fe/' });
+    console.log('Error thrown by our error handler');
+    res.sendFile('index.html', { root: '../../dist/fe/' });
   }
 );
 
