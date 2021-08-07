@@ -1,1 +1,1 @@
-web: node ./backend/dist/bin/www.js
+web: node ./server.js

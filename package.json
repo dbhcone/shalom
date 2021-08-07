@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node ./backend/dist/bin/www.js",
+    "start": "node ./server.js",
+    "oldstart": "node ./backend/dist/bin/www.js",
     "serve": "ng serve",
-    "build": "npm run build:fe && npm run build:be",
+    "build": "ng build",
+    "oldbuild": "npm run build:fe && npm run build:be",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:fe": "ng serve",
