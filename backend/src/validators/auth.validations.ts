@@ -23,7 +23,7 @@ const accountValidation: ObjectSchema<{
   email: string;
   surname: string;
   firstName: string;
-  otherNames: string;
+  otherNames?: string;
   gender: string;
   primaryMobileNumber: string;
   otherNumbers: string[];
@@ -31,7 +31,7 @@ const accountValidation: ObjectSchema<{
 }> = Joi.object({
   email: Joi.string().email().trim(),
   surname: Joi.string().required().min(3).trim(),
-  firstName: Joi.string().required().min(3),
+  firstName: Joi.string().required().min(3).optional(),
   otherNames: Joi.string().label('other names'),
   gender: Joi.string().required().trim().min(4).max(6),
   primaryMobileNumber: Joi.string().required().trim().length(10).messages({
