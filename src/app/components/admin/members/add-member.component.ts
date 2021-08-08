@@ -20,7 +20,7 @@ export class AddMemberComponent implements OnInit {
         email: ['', [Validators.required, Validators.email, Validators.min(5)]],
         surname: ['', [Validators.required, Validators.minLength(3)]],
         firstName: ['', [Validators.required, Validators.minLength(3)]],
-        otherNames: ['', [Validators.minLength(5)]],
+        otherNames: [''],
         gender: ['', [Validators.required]],
         occupation: ['', [Validators.minLength(5)]],
         primaryMobileNumber: [
@@ -30,7 +30,7 @@ export class AddMemberComponent implements OnInit {
       }),
       user: this.formBuilder.group({
         username: ['', [Validators.required, Validators.minLength(8)]],
-        password: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
         role: ['', [Validators.required, Validators.minLength(4)]],
       }),
     });
