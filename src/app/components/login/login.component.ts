@@ -39,9 +39,10 @@ export class LoginComponent implements OnInit {
         });
       }
     }, (err)=> {
+      console.log(err);
       Swal.fire({
         icon: "error",
-        titleText: err.message
+        titleText: err.error.message
       })
     });
   }
