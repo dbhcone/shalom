@@ -56,30 +56,24 @@ const Signup = async (req: Request, res: Response) => {
 
         if (userData) {
           console.log('User creation data', userData);
-          res
-            .status(201)
-            .json({
-              message: 'Account created successfully',
-              code: 201,
-              status: 'ok',
-            });
+          res.status(201).json({
+            message: 'Account created successfully',
+            code: 201,
+            status: 'ok',
+          });
         } else {
-          res
-            .status(400)
-            .json({
-              message: 'Could not create user',
-              code: 400,
-              status: 'error',
-            });
-        }
-      } else {
-        res
-          .status(400)
-          .json({
-            message: 'Account creation failed',
+          res.status(400).json({
+            message: 'Could not create user',
             code: 400,
             status: 'error',
           });
+        }
+      } else {
+        res.status(400).json({
+          message: 'Account creation failed',
+          code: 400,
+          status: 'error',
+        });
       }
     } catch (error) {
       console.log('User Validation error', error.message);
@@ -142,20 +136,23 @@ const UsersList = async (req: Request, res: Response) => {
     res.status(200).json({ message: '', status: 'ok', code: 200, data });
   } catch (error) {
     console.log('Error fetching users', error.message);
-    res
-      .status(404)
-      .send({
-        status: 'error',
-        message: 'Error fetching user details',
-        code: 404,
-      });
+    res.status(404).send({
+      status: 'error',
+      message: 'Error fetching user details',
+      code: 404,
+    });
   }
 };
 
 const MembersList = async (req: Request, res: Response) => {
   try {
     let data = await Account.find({});
-    res.status(200).json({ data });
+    res.status(200).json({
+      code: 200,
+      message: 'Members list fetched successfully',
+      status: 'ok',
+      data,
+    });
   } catch (error) {
     console.log('Error fetching members list', error.message);
     res.status(404).send({ error: error.message });
