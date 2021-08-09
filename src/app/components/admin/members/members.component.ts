@@ -56,7 +56,15 @@ const NAMES: string[] = [
   styleUrls: ['./members.component.scss'],
 })
 export class MembersComponent implements AfterViewInit, OnDestroy {
-  displayedColumns: string[] = ['surname', 'firstName', 'otherNames', 'gender', 'primaryMobileNumber'];
+  displayedColumns: string[] = [
+    'surname',
+    'firstName',
+    'otherNames',
+    'gender',
+    'primaryMobileNumber',
+    'edit',
+    'delete',
+  ];
   // dataSource: MatTableDataSource<UserData>;
   dataSource: MatTableDataSource<any>;
   subscription?: Subscription;
@@ -103,7 +111,6 @@ export class MembersComponent implements AfterViewInit, OnDestroy {
       this.dataSource.paginator.firstPage();
     }
   }
-
 
   openMemberDialog(): void {
     const dialogRef = this.dialog.open(AddMemberComponent, {
