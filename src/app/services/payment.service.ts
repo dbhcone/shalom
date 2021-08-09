@@ -13,4 +13,6 @@ export class PaymentService {
   getAllPayments(): Observable<Object> {
     return this.client.POST(`${environment.apiroot}${Payment.all}`)
   }
+
+  
 }

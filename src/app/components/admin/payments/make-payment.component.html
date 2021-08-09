@@ -1,7 +1,81 @@
-<form [formGroup]="makePaymentForm">
-    
-    <mat-form-field>
-        <mat-label> Select member </mat-label>
-    </mat-form-field>
 
-</form>
+<h2 mat-dialog-title>
+    Add Payment Details <span mat-dialog-close>&times;</span>
+  </h2>
+  
+  <form [formGroup]="makePaymentForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content class="mat-typography block">
+      
+      
+      <!-- Payer -->
+        <mat-form-field appearance="outline">
+          <mat-label>Payer </mat-label>
+          <mat-label>Select an option</mat-label>
+        <mat-select
+          (selectionChange)="onPayerChanged($event)"
+          formControlName="payer"
+        >
+          <mat-option *ngFor="let member of members" [value]="member._id">{{
+            member.surname
+          }}</mat-option>
+        </mat-select>
+        </mat-form-field>
+
+        <!-- Year of payment -->
+        <mat-form-field appearance="outline">
+          <mat-label>Year </mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="year"
+            placeholder="year"
+            min="2011"
+          />
+        </mat-form-field>
+
+        <!-- Month of payment -->
+        <mat-form-field appearance="outline">
+          <mat-label>Month </mat-label>
+          <input
+            matInput
+            type="month"
+            formControlName="month"
+            placeholder="month"
+            
+          />
+        </mat-form-field>
+
+        <!-- Month of payment -->
+        <mat-form-field appearance="outline">
+            <mat-label>Month </mat-label>
+            <input
+              matInput
+              type="month"
+              formControlName="month"
+              placeholder="month"
+              
+            />
+          </mat-form-field>
+  
+        
+      <!-- </div> -->
+  
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [mat-dialog-close]="makePaymentForm.value"
+        cdkFocusInitial
+        type="submit"
+        [disabled]="!this.makePaymentForm.valid"
+      >
+        Save
+      </button>
+    </mat-dialog-actions>
+  </form>
+  
+
+
+

@@ -28,9 +28,7 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
       this.dataSource.data = res.data;
     });
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     console.log('Called');
