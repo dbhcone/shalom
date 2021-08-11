@@ -14,16 +14,9 @@
   <mat-hint>Type anything (eg. name, gender, number) about the member to search for</mat-hint>
 </mat-form-field>
 
-<div class="full-width">
+<div>
   <table
-    class="
-      table
-      table-success
-      table-bordered
-      table-hover
-      table-striped
-      table-responsive
-    "
+    
     matTableExporter
     mat-table
     [dataSource]="dataSource"
@@ -70,7 +63,7 @@
     <ng-container matColumnDef="primaryMobileNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile #</th>
       <td mat-cell *matCellDef="let row">
-        <a href="tel:{{ row.primaryMobileNumber }}">{{
+        <a href="tel:{{ row.primaryMobileNumber }}"><mat-icon matPrefix>call</mat-icon> {{
           row.primaryMobileNumber
         }}</a>
       </td>
