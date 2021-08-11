@@ -97,7 +97,7 @@
 
     <!-- User credentials -->
 
-    <div formGroupName="user" class="block">
+    <div *ngIf="!data" formGroupName="user" class="block">
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
         <input

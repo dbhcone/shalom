@@ -4,8 +4,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddMemberComponent } from './add-member.component';
+import { EditMemberComponent } from './edit-member.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 export interface UserData {
   id: string;
@@ -112,22 +114,63 @@ export class MembersComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  openMemberDialog(): void {
+  openAddMemberDialog(): void {
     const dialogRef = this.dialog.open(AddMemberComponent, {
       width: '500px',
       disableClose: true,
     });
     this.subscription = dialogRef.afterClosed().subscribe((result) => {
-      // if(result.event == 'Add'){
-      //   this.addRowData(result.data);
-      // }else if(result.event == 'Update'){
-      //   this.updateRowData(result.data);
-      // }else if(result.event == 'Delete'){
-      //   this.deleteRowData(result.data);
-      // }
       console.log('dialog closed', result);
       this.fetchMembersList();
     });
+  }
+
+  openEditMemberDialog(data: any) : void {
+    const dialogRef = this.dialog.open(AddMemberComponent, {
+      width: '500px',
+      disableClose: true,
+      data
+    });
+    this.subscription = dialogRef.afterClosed().subscribe((result) => {
+      console.log('dialog closed', result);
+      this.fetchMembersList();
+    });
+  }
+
+  editMember(member: any) {
+    console.log("Editting...", member)
+  }
+
+  deleteMember(member: any) {
+    console.log("Deleting...", member);
+    this.triggerDelete();
+  }
+
+  triggerDelete () {
+    Swal.fire ({
+      title: 'Are you sure?',
+      text: `You will not be able to recover user's data!`,
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    })
+    .then(() => {
+      Swal.fire(
+        'Deleted!',
+        'User details has been deleted.',
+        'success'
+      )
+    }, (dismiss) =>{
+      console.log("dismiss", dismiss)
+      // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+      if (dismiss === 'cancel') {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        )
+      }
+    })
   }
 }
 
