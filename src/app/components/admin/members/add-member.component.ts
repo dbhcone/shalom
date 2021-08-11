@@ -14,7 +14,11 @@ import Swal from 'sweetalert2';
 })
 export class AddMemberComponent implements OnInit {
   memberForm;
-  constructor(private formBuilder: FormBuilder, private auth: AuthService,public dialogRef: MatDialogRef<AddMemberComponent>,) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    public dialogRef: MatDialogRef<AddMemberComponent>
+  ) {
     this.memberForm = this.formBuilder.group({
       account: this.formBuilder.group({
         email: ['', [Validators.required, Validators.email, Validators.min(5)]],
@@ -25,7 +29,7 @@ export class AddMemberComponent implements OnInit {
         occupation: ['', [Validators.minLength(5)]],
         primaryMobileNumber: [
           '',
-          [Validators.minLength(10), Validators.maxLength(10)],
+          [Validators.minLength(10), Validators.maxLength(15)],
         ],
       }),
       user: this.formBuilder.group({
@@ -47,37 +51,47 @@ export class AddMemberComponent implements OnInit {
     console.log(change.value);
   }
 
-  onSubmit() : void{
+  onSubmit(): void {
     console.log('this.memberForm', this.memberForm.value);
     const account: IAccount = this.account?.value;
     const user: IUser = this.user?.value;
     this.auth.signup(user, account).subscribe(
-      (resp) => {
+      async (resp: any) => {
         console.log('resp', resp);
+        Swal.fire({
+          title: resp.message,
+          icon: 'success',
+        }).then(() => {
+          this.closeDialog();
+        });
       },
       (err) => {
-        Swal.fire({ title: 'Error', timer: 5000, text: err.message });
+        Swal.fire({
+          title: `Error - ${err.error.code}`,
+          timer: 5000,
+          text: err.error.message,
+        });
       }
     );
   }
 
-  get account() : AbstractControl | null {
+  get account(): AbstractControl | null {
     return this.memberForm.get('account');
   }
 
-  get user() : AbstractControl | null {
+  get user(): AbstractControl | null {
     return this.memberForm.get('user');
   }
 
-  get firstName() : AbstractControl | null {
+  get firstName(): AbstractControl | null {
     return this.memberForm.get(['account', 'firstName']);
   }
 
-  get surname() : AbstractControl | null {
+  get surname(): AbstractControl | null {
     return this.memberForm.get(['account', 'surname']);
   }
 
-  get otherNames () : AbstractControl | null {
+  get otherNames(): AbstractControl | null {
     return this.memberForm.get('account.otherNames');
   }
 
@@ -86,14 +100,18 @@ export class AddMemberComponent implements OnInit {
     const surname: string = this.surname?.value.trim();
     const otherNames: string = this.otherNames?.value.trim();
 
-    const username = new UserAccountHelper().generateUsername({surname, firstName, otherNames});
-    this.memberForm.get("user.username")?.setValue(username);
+    const username = new UserAccountHelper().generateUsername({
+      surname,
+      firstName,
+      otherNames,
+    });
+    this.memberForm.get('user.username')?.setValue(username);
   }
 
-  onUsernameChange(changeEvent: any) : void{
-    console.log(changeEvent.target.value)
-    console.log("Username change event", changeEvent)
-    console.log("change event", typeof(changeEvent))
+  onUsernameChange(changeEvent: any): void {
+    console.log(changeEvent.target.value);
+    console.log('Username change event', changeEvent);
+    console.log('change event', typeof changeEvent);
   }
 
   closeDialog(): void {
