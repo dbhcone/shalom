@@ -34,7 +34,7 @@ const accountValidation: ObjectSchema<{
   firstName: Joi.string().required().min(3),
   otherNames: Joi.string(),
   gender: Joi.string().required().length(1),
-  primaryMobileNumber: Joi.string().required().messages({
+  primaryMobileNumber: Joi.string().required().min(10).max(15).messages({
     'string.base': `'primary mobile number' should be a type of 'text'`,
     'string.empty': `'primary mobile number' cannot be an empty field`,
     // 'string.length': `'primary mobile number' should have a length of {#limit}`,
