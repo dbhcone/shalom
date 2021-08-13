@@ -8,4 +8,5 @@ export interface IDues extends Document {
     payer: IAccount["_id"];
     year: number;
     month: string;
+    date: Date;
 }

@@ -11,8 +11,23 @@ const MakePayment = async(req: Request, res: Response) => {
         console.log("Validating dues completed", validation);
         
         let due = await new Dues(data).save();
+
+        if (due) {
+            console.log('Payment made successfully', due);
+            res.status(201).json({
+              message: 'Dues paid successfully',
+              code: 201,
+              status: 'ok',
+            });
+          } else {
+            res.status(400).json({
+              message: 'Could not key data in for dues',
+              code: 400,
+              status: 'error',
+            });
+          }
     } catch (error) {
-        
+        return res.status(404).json({code: 404, message: error.message, status: "ok"})
     }
     
 }
