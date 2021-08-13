@@ -12,6 +12,11 @@ export class UserAccountHelper {
     }
     return generatedname.toLowerCase();
   }
+
+  getFullName(name: Name) : string {
+    const {firstName, surname, otherNames} = name;
+    return `${surname.toUpperCase()} ${otherNames ?.substr(0,1).toUpperCase() }. ${firstName }`
+  }
 }
 
 interface Name {

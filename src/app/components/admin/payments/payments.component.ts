@@ -48,14 +48,10 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
   openPaymentDialog() {
     const dialogRef = this.dialog.open(MakePaymentComponent, {
       width: '500px',
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe((result) => {
-      // if(result.event == 'Add'){
-      //   this.addRowData(result.data);
-      // }else if(result.event == 'Update'){
-      //   this.updateRowData(result.data);
-      // }else if(result.event == 'Delete'){
-      //   this.deleteRowData(result.data);
+     
       // }
       console.log(result);
     });
