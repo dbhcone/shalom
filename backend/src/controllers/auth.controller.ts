@@ -155,7 +155,7 @@ const MembersList = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.log('Error fetching members list', error.message);
-    res.status(404).send({ error: error.message });
+    res.status(404).json({code: 404, message: error.message, status: "error" });
   }
 };
 export { Signup, Login, UsersList, MembersList };
