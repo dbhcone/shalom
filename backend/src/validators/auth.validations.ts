@@ -32,7 +32,7 @@ const accountValidation: ObjectSchema<{
   email: Joi.string().email(),
   surname: Joi.string().required().min(3),
   firstName: Joi.string().required().min(3),
-  otherNames: Joi.string().allow([null]),
+  otherNames: Joi.string().allow(null),
   gender: Joi.string().required().length(1),
   primaryMobileNumber: Joi.string().required().min(10).max(15).messages({
     'string.base': `'primary mobile number' should be a type of 'text'`,
