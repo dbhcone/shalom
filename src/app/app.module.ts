@@ -13,7 +13,7 @@ import { UserdashboardComponent } from './components/userdashboard/userdashboard
 import { PaymentHistoryComponent } from './components/userdashboard/payment-history/payment-history.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { AngularMaterialModule } from './angular-material.module';
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AddMemberComponent } from './components/admin/members/add-member.component';
 import { ProfileComponent } from './components/userdashboard/profile/profile.component';
 import { ReportsComponent } from './components/userdashboard/reports/reports.component';
@@ -31,7 +31,7 @@ import { MakePaymentComponent } from './components/admin/payments/make-payment.c
     ProfileComponent,
     ReportsComponent,
     PaymentsComponent,
-    MakePaymentComponent
+    MakePaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,10 +41,10 @@ import { MakePaymentComponent } from './components/admin/payments/make-payment.c
     LayoutModule,
     MatTableExporterModule,
     AngularMaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
