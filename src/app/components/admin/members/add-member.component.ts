@@ -18,13 +18,23 @@ export class AddMemberComponent implements OnInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
     public dialogRef: MatDialogRef<AddMemberComponent>,
-    @Inject(MAT_DIALOG_DATA) public data?: any){
-      console.log('data', data);
+    @Inject(MAT_DIALOG_DATA) public data?: any
+  ) {
+    console.log('data', data);
     this.memberForm = this.formBuilder.group({
       account: this.formBuilder.group({
-        email: [data?.email, [Validators.required, Validators.email, Validators.min(5)]],
-        surname: [data?.surname, [Validators.required, Validators.minLength(3)]],
-        firstName: [data?.firstName, [Validators.required, Validators.minLength(3)]],
+        email: [
+          data?.email,
+          [Validators.required, Validators.email, Validators.min(5)],
+        ],
+        surname: [
+          data?.surname,
+          [Validators.required, Validators.minLength(3)],
+        ],
+        firstName: [
+          data?.firstName,
+          [Validators.required, Validators.minLength(3)],
+        ],
         otherNames: [data?.otherNames],
         gender: [data?.gender, [Validators.required]],
         occupation: [data?.occupation, [Validators.minLength(5)]],
@@ -34,8 +44,14 @@ export class AddMemberComponent implements OnInit {
         ],
       }),
       user: this.formBuilder.group({
-        username: [data?.username, [Validators.required, Validators.minLength(8)]],
-        password: [data?.password, [Validators.required, Validators.minLength(8)]],
+        username: [
+          data?.username,
+          [Validators.required, Validators.minLength(8)],
+        ],
+        password: [
+          data?.password,
+          [Validators.required, Validators.minLength(8)],
+        ],
         role: [data?.role, [Validators.required, Validators.minLength(4)]],
       }),
     });

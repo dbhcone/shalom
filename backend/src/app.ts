@@ -10,6 +10,7 @@ import config from 'config';
 import express, { NextFunction, Request, Response } from 'express';
 import { authRouter } from './routes/auth';
 import cors from 'cors';
+import { duesRouter } from './routes/dues';
 
 var app = express();
 app.use(cors());
@@ -26,6 +27,7 @@ app.use(cookieParser());
 
 // app.use('/', indexRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/dues', duesRouter);
 
 // serve only the static files from the dist directory
 // const statdir = path.join(__dirname, 'dist');

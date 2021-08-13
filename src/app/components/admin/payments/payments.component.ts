@@ -12,7 +12,7 @@ import { PaymentService } from 'src/app/services/payment.service';
   styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['email', 'firstName', 'gender'];
+  displayedColumns: string[] = ['amount', 'year', 'month', 'date'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator)

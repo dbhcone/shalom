@@ -5,10 +5,10 @@ const Auth = {
     members: '/auth/members'
 }
 
-const Payment = {
+const Payments = {
     all: '/payments',
     some: '/payments',
     one: '/payment'
 }
 
-export {Auth, Payment};
+export {Auth, Payments};

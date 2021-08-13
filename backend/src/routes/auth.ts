@@ -5,7 +5,7 @@ import {
   MembersList,
   Login,
 } from '../controllers/auth.controller';
-let router = express.Router();
+const router = express.Router();
 
 router.post('/signup', Signup);
 router.post('/users', UsersList);
