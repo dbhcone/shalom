@@ -23,18 +23,21 @@ export class AddMemberComponent implements OnInit {
         console.log('data', data);
         this.memberForm = this.formBuilder.group({
             account: this.formBuilder.group({
-                email: [data ? data.email : '', [Validators.required, Validators.email, Validators.min(5)]],
-                surname: [data ? data.surname : '', [Validators.required, Validators.minLength(3)]],
-                firstName: [data ? data.firstName : '', [Validators.required, Validators.minLength(3)]],
-                otherNames: [data ? data.otherNames : ''],
+                email: [data?.email || null, [Validators.required, Validators.email, Validators.min(5)]],
+                surname: [data?.surname || null, [Validators.required, Validators.minLength(3)]],
+                firstName: [data?.firstName || null, [Validators.required, Validators.minLength(3)]],
+                otherNames: [data?.otherNames || null],
                 gender: [data?.gender, [Validators.required]],
-                occupation: [data?.occupation, [Validators.minLength(5)]],
-                primaryMobileNumber: [data?.primaryMobileNumber, [Validators.minLength(10), Validators.maxLength(15)]],
+                occupation: [data?.occupation || null, [Validators.minLength(5)]],
+                primaryMobileNumber: [
+                    data?.primaryMobileNumber || null,
+                    [Validators.minLength(10), Validators.maxLength(15)],
+                ],
             }),
             user: this.formBuilder.group({
-                username: [data ? data.username : '', [Validators.required, Validators.minLength(8)]],
-                password: [data ? data.password : '', [Validators.required, Validators.minLength(8)]],
-                role: [data ? data.role : '', [Validators.required, Validators.minLength(4)]],
+                username: [data?.username || null, [Validators.required, Validators.minLength(8)]],
+                password: [data?.password || null, [Validators.required, Validators.minLength(8)]],
+                role: [data?.role || null, [Validators.required, Validators.minLength(4)]],
             }),
         });
     }
@@ -130,9 +133,9 @@ export class AddMemberComponent implements OnInit {
     }
 
     handleUsernameSuggestion(): void {
-        const firstName: string = this.firstName?.value?.trim();
-        const surname: string = this.surname?.value?.trim();
-        const otherNames: string = this.otherNames?.value?.trim();
+        const firstName: string = this.firstName?.value?.trim() || null;
+        const surname: string = this.surname?.value?.trim() || null;
+        const otherNames: string = this.otherNames?.value?.trim() || null;
 
         const username = new UserAccountHelper().generateUsername({
             surname,
@@ -143,7 +146,7 @@ export class AddMemberComponent implements OnInit {
     }
 
     handlePasswordGeneration(): void {
-        const mobileNumber: string = this.primaryMobileNumber?.value.trim();
+        const mobileNumber: string = this.primaryMobileNumber?.value?.trim();
         console.log({ mobileNumber });
         this.memberForm.get('user.password')?.setValue(mobileNumber);
     }

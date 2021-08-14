@@ -98,11 +98,12 @@ const Login = async (req: Request, res: Response) => {
         // }
 
         const validation = await loginValidation.validateAsync(req.body);
-        let user: IUser | null;
+        console.log('body', req.body);
 
-        user = await Users.findOne(isAdmin ? { username, password } : { username, password, role: 'admin' });
+        const role = isAdmin ? 'admin' : 'member';
+        const user = await Users.findOne({ username, password, role });
 
-        console.log('user', user);
+        // console.log('user', user);
 
         if (!user) {
             return res.status(403).json({ code: 403, message: 'Invalid credentials', status: 'error' });
