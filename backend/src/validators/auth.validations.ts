@@ -32,7 +32,7 @@ const accountValidation: ObjectSchema<{
   email: Joi.string().email(),
   surname: Joi.string().required().min(3),
   firstName: Joi.string().required().min(3),
-  otherNames: Joi.string().allow(null),
+  otherNames: Joi.string().default(null),
   gender: Joi.string().required().length(1),
   primaryMobileNumber: Joi.string().required().min(10).max(15).messages({
     'string.base': `'primary mobile number' should be a type of 'text'`,
@@ -43,4 +43,20 @@ const accountValidation: ObjectSchema<{
   occupation: Joi.string().min(5),
 });
 
-export { loginValidation, userValidation, accountValidation };
+
+const accountUpdateValidation = Joi.object({
+  _id: Joi.string().required().label("Account Id"),
+  updateData: Joi.object({
+    email: Joi.string().email(),
+    surname: Joi.string().min(3),
+    firstName: Joi.string().min(3),
+    otherNames: Joi.string().default(null),
+    gender: Joi.string().length(1),
+    primaryMobileNumber: Joi.string().min(10).max(15).messages({
+      'string.base': `'primary mobile number' should be a type of 'text'`,
+      'string.empty': `'primary mobile number' cannot be an empty field`,
+    }),
+    occupation: Joi.string().min(5),
+  }).required()
+});
+export { loginValidation, userValidation, accountValidation, accountUpdateValidation };

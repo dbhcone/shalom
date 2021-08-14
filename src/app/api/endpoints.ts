@@ -2,7 +2,9 @@ const Auth = {
     login: '/auth/login',
     signup: '/auth/signup',
     users: '/auth/users',
-    members: '/auth/members'
+    members: '/auth/members',
+    updateMember: '/auth/updateMember',
+    deleteUser: '/auth/deleteUser'
 }
 
 const Payments = {

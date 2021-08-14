@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log("inside constructor")
+   }
 
   ngOnInit(): void {
+    console.log('inside init')
   }
 
 }

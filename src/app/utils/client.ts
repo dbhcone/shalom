@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment as env } from 'src/environments/environment';
+import { environment as env, environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,14 +15,14 @@ export class Client {
     'Content-Type': 'application/json',
   });
 
-  GET(endpoint: string): Observable<Object>  {
-    return this.http.get(`${endpoint}`, {
+  GET(endpoint: string)  {
+    return this.http.get<Record<string, unknown>>(`${environment.apiroot}${endpoint}`, {
       headers: this.headers,
     });
   }
 
-  POST(endpoint: string, data?: any): Observable<Object>  {
-    return this.http.post(`${endpoint}`, data, {
+  POST(endpoint: string, data?: any)  {
+    return this.http.post<Record<string, unknown>>(`${environment.apiroot}${endpoint}`, data, {
       headers: this.headers,
     });
   }

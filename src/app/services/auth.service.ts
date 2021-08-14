@@ -14,15 +14,23 @@ export class AuthService implements OnInit {
   ngOnInit(): void {
     // user.isAdmin = true;
   }
-  login(credentials: ICredentials) : Observable<Object> {
+  login(credentials: ICredentials) {
     return this.client.POST(`${environment.apiroot}${Auth.login}`, {...credentials});
   }
 
-  signup(user: IUser, accountData: IAccount) : Observable<Object> {
-    return this.client.POST(`${environment.apiroot}${Auth.signup}`, {user, account: accountData})
+  signup(user: IUser, accountData: IAccount) {
+    return this.client.POST(`${Auth.signup}`, {user, account: accountData})
   }
 
-  getMembersList() : Observable<Object> {
-    return this.client.POST(`${environment.apiroot}${Auth.members}`);
+  getMembersList() {
+    return this.client.POST(`${Auth.members}`);
+  }
+
+  updateMemberDetails(_id: string, account: IAccount)  {
+    return this.client.POST(`${Auth.updateMember}`, {_id, updateData: account})
+  }
+
+  deleteUser(_id: string) {
+    return this.client.POST(`${Auth.deleteUser}`, {_id})
   }
 }

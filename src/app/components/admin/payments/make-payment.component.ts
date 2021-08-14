@@ -55,7 +55,7 @@ export class MakePaymentComponent implements OnInit, OnDestroy {
     const filterValue = value.toLowerCase();
 
     return this.members.filter((member) => {
-      let fullname = this.fullName(member);
+      const fullname = this.fullName(member);
       return fullname.toLowerCase().includes(filterValue);
       // ||
       // fullname.toLowerCase().includes(filterValue) ||

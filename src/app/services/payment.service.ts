@@ -11,11 +11,11 @@ export class PaymentService {
 
   constructor(private client: Client) { }
 
-  getAllPayments(): Observable<Object> {
+  getAllPayments() {
     return this.client.POST(`${environment.apiroot}${Payments.all}`)
   }
 
-  makePayment(payment: Payment) : Observable<Object>{
+  makePayment(payment: Payment){
     return this.client.POST(`${environment.apiroot}${Payments.all}`, payment)
   }
 

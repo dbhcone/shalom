@@ -51,25 +51,16 @@
         />
       </mat-form-field>
 
-      <div>
-        <p>
-          <label for="gender">Gender </label>
-          <input
-            type="radio"
-            value="M"
-            name="gender"
-            formControlName="gender"
-          />
-          Male
-          <input
-            type="radio"
-            value="F"
-            name="gender"
-            formControlName="gender"
-          />
-          Female
-        </p>
-      </div>
+      <mat-radio-group
+      formControlName="gender"
+      aria-label="Select an option for gender"
+    >
+      <mat-label>Gender</mat-label>
+      <mat-radio-button id="male" value="M">Male</mat-radio-button>
+      <mat-radio-button id="female" value="F">Female</mat-radio-button>
+    </mat-radio-group>
+
+
       <mat-form-field appearance="outline">
         <mat-label>Occupation</mat-label>
         <input
@@ -89,9 +80,9 @@
           formControlName="primaryMobileNumber"
           placeholder="enter number"
           required
-          #mobileNumber
+          (keyup)="handlePasswordGeneration()"
         />
-        <mat-hint>Example: 0244024123</mat-hint>
+        <mat-hint>Example: 0244024123 or +233244024123</mat-hint>
       </mat-form-field>
     </div>
 
@@ -102,7 +93,6 @@
         <mat-label>Username</mat-label>
         <input
           matInput
-          (change)="onUsernameChange($event)"
           type="text"
           formControlName="username"
           placeholder="username"
@@ -118,7 +108,6 @@
           formControlName="password"
           placeholder="username"
           required
-          value="{{ mobileNumber.value }}"
           autocomplete="cc-csc"
         />
       </mat-form-field>

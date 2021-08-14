@@ -2,12 +2,12 @@ export class UserAccountHelper {
   generateUsername(name: Name): string {
     let generatedname = '';
     const { firstName, surname, otherNames } = name;
-    if (firstName != '' && surname != '' && otherNames != '') {
+    if (firstName?.trim() != '' && surname?.trim() != '' && otherNames?.trim() != '') {
       generatedname = `${firstName}${otherNames.substring(
         0,
         1
       )}${surname.substring(0, 3)}`;
-    } else if (firstName != '' && surname != '') {
+    } else if (firstName?.trim() != '' && surname?.trim() != '') {
       generatedname = `${firstName}${surname.substring(0, 3)}`;
     }
     return generatedname.toLowerCase();
