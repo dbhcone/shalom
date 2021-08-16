@@ -8,12 +8,14 @@ const duesSchema: ObjectSchema<{
     payer: IAccount["_id"];
     year: number;
     month: string;
+    date: Date;
 }> = Joi.object({
     amount: Joi.number().required().greater(0),
     recordedBy: Joi.any().required().label("recorded by"),
     payer: Joi.any().required(),
     year: Joi.number().greater(2010),
-    month: Joi.string().required()
+    month: Joi.string().required(),
+    date: Joi.date().required()
 })
 
 export {duesSchema}

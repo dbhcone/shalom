@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/all', AllPayments);
 
-router.post('/add', MakePayment);
+router.post('/add', MakePayment); 
 
 export { router as duesRouter };

@@ -8,9 +8,9 @@ const Auth = {
 }
 
 const Payments = {
-    all: '/payments',
+    all: '/dues/all',
     some: '/payments',
-    one: '/payment'
+    add: '/dues/add'
 }
 
 export {Auth, Payments};

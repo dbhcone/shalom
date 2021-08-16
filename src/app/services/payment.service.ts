@@ -12,11 +12,11 @@ export class PaymentService {
   constructor(private client: Client) { }
 
   getAllPayments() {
-    return this.client.POST(`${environment.apiroot}${Payments.all}`)
+    return this.client.POST(`${Payments.all}`)
   }
 
   makePayment(payment: Payment){
-    return this.client.POST(`${environment.apiroot}${Payments.all}`, payment)
+    return this.client.POST(`${Payments.add}`, payment)
   }
 
   

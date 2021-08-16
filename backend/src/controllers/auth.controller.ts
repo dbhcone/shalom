@@ -109,7 +109,7 @@ const Login = async (req: Request, res: Response) => {
             return res.status(403).json({ code: 403, message: 'Invalid credentials', status: 'error' });
         }
 
-        let token = generateToken({ username: user.username, role: user.role }, '24h');
+        let token = generateToken({ username: user.username, role: user.role, id: user._id }, '24h');
 
         return res.status(200).json({ message: 'Login successful!', token, code: 200, status: 'ok' });
     } catch (error) {
