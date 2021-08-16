@@ -30,9 +30,9 @@ export class MakePaymentComponent implements OnInit, OnDestroy {
         public dialogRef: MatDialogRef<MakePaymentComponent>,
     ) {
         this.makePaymentForm = this.fb.group({
-            amount: [5, [Validators.min(10), Validators.required]],
+            amount: [5, [Validators.min(5), Validators.required]],
             // recordedBy: ['', [Validators.required]]
-            payer: ['', [Validators.required, Validators.minLength(10)]],
+            payer: ['', [Validators.required]],
             year: ['', [Validators.required, Validators.min(2011)]],
             month: ['', [Validators.required]],
             date: [{ value: new Date(), disabled: false }, [Validators.required]],
