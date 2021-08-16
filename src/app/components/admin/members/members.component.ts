@@ -49,6 +49,7 @@ const NAMES: string[] = [
 })
 export class MembersComponent implements AfterViewInit, OnDestroy {
     displayedColumns: string[] = [
+        'username',
         'surname',
         'firstName',
         'otherNames',
