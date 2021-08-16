@@ -38,25 +38,25 @@
     <!-- Surname Column -->
     <ng-container matColumnDef="surname">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Surname</th>
-      <td mat-cell *matCellDef="let row">{{ row.accountOwner.surname }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.accountOwner?.surname }}</td>
     </ng-container>
 
     <!-- firstName Column -->
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-      <td mat-cell *matCellDef="let row">{{ row.accountOwner.firstName }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.accountOwner?.firstName }}</td>
     </ng-container>
 
     <!-- otherNames Column -->
     <ng-container matColumnDef="otherNames">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Other Names</th>
-      <td mat-cell *matCellDef="let row">{{ row.accountOwner.otherNames }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.accountOwner?.otherNames }}</td>
     </ng-container>
 
     <!-- Gender Column -->
     <ng-container matColumnDef="gender">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
-      <td mat-cell *matCellDef="let row">{{ row.accountOwner.gender }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.accountOwner?.gender }}</td>
     </ng-container>
 
     <!-- Username Column -->
@@ -69,8 +69,8 @@
     <ng-container matColumnDef="primaryMobileNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile #</th>
       <td mat-cell *matCellDef="let row">
-        <a href="tel:{{ row.accountOwner.primaryMobileNumber }}"><mat-icon matPrefix>call</mat-icon> {{
-          row.accountOwner.primaryMobileNumber
+        <a href="tel:{{ row.accountOwner?.primaryMobileNumber }}"><mat-icon matPrefix>call</mat-icon> {{
+          row.accountOwner?.primaryMobileNumber
         }}</a>
       </td>
     </ng-container>
@@ -79,7 +79,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
       <td mat-cell *matCellDef="let row">
-         <button mat-flat-button (click)="openEditMemberDialog(row)">
+         <button mat-flat-button (click)="openEditMemberDialog(row.accountOwner)">
           <mat-icon color="primary">edit</mat-icon>
         </button>
       </td>
@@ -87,7 +87,7 @@
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
       <td mat-cell *matCellDef="let row">
-         <button mat-flat-button (click)="triggerDeleteAccount(row._id)">
+         <button mat-flat-button (click)="triggerDeleteAccount(row.accountOwner?._id)">
           <mat-icon color="warn">delete</mat-icon>
         </button>
       </td>
