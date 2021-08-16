@@ -134,7 +134,7 @@ const UsersList = async (req: Request, res: Response) => {
 
 const MembersList = async (req: Request, res: Response) => {
     try {
-        let data = await Account.find({});
+        let data = await Users.find({}).populate("accountOwner");
         return res.status(200).json({
             code: 200,
             message: 'Members list fetched successfully',
