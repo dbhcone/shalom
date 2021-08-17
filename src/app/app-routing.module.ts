@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
-import { AddMemberComponent } from './components/admin/members/add-member.component';
+import { AdmindashboardComponent } from './components/admin/dashboard/admindashboard.component';
 import { MembersComponent } from './components/admin/members/members.component';
 import { PaymentsComponent } from './components/admin/payments/payments.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,7 +18,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'members', component: MembersComponent },
-      // { path: 'add-member', component: AddMemberComponent },
+      { path: 'dashboard', component: AdmindashboardComponent },
       { path: 'payments', component: PaymentsComponent },
     ],
   },
