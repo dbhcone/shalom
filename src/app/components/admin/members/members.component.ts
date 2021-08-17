@@ -93,7 +93,10 @@ export class MembersComponent implements AfterViewInit, OnDestroy {
     fetchMembersList(): void {
         this.auth.getMembersList().subscribe((res: any) => {
             console.log(res);
-            this.dataSource.data = res.data;
+
+            this.dataSource.data = res.data.map((member: any) => {
+                return { username: member.username, ...member.accountOwner };
+            });
         });
     }
     applyFilter(event: Event): void {
