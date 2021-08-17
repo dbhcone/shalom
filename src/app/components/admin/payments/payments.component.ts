@@ -47,7 +47,13 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
     fetchAllPayments() {
         this.payment.getAllPayments().subscribe((res: any) => {
             console.log(res);
-            this.dataSource.data = res.data;
+            this.dataSource.data = res.data.map((dues: any) => {
+                const {
+                    payer: { _id, ...payer },
+                    ...payerremaindetails
+                } = dues;
+                return { ...payer, ...payerremaindetails };
+            });
         });
     }
     triggerDeletePayment(_id: any) {
