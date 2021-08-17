@@ -106,4 +106,8 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
     formatDate(date: any) {
         return moment(date).format('dddd, Do MMMM, YYYY @ h:mm:ss a');
     }
+
+    getTotalPayments() {
+        return this.dataSource.data.map((t) => t.amount).reduce((acc, value) => acc + value, 0);
+    }
 }
