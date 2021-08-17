@@ -10,7 +10,8 @@ const Auth = {
 const Payments = {
     all: '/dues/all',
     some: '/payments',
-    add: '/dues/add'
+    add: '/dues/add',
+    delete: '/dues/delete'
 }
 
 export {Auth, Payments};

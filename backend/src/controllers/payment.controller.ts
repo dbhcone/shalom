@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { IDues } from '../interfaces/dues.interface';
 import { duesSchema } from '../validators/payment.validations';
 import Dues from '../models/dues.model';
+import { deleteByIdValidation } from '../validators/shared.validations';
 
 const MakePayment = async (req: Request, res: Response) => {
   const data: IDues = req.body;
@@ -48,4 +49,20 @@ const AllPayments = async (req: Request, res: Response) => {
   }
 };
 
-export { MakePayment, AllPayments };
+const DeletePayment = async (req: Request, res: Response) => {
+  const data = req.body;
+  try {
+    const validation = await deleteByIdValidation.validateAsync(data);
+
+    const due = await Dues.findByIdAndDelete(data._id);
+
+    if (due) {
+      return res.status(200).json({message: "Payment deleted successfully", code: 200, status: 'ok'})
+    }
+    return res.status(404).json({status: 'error', message: "Could not find and delete payment", code: 404})
+  } catch (error) {
+    return res.status(404).json({status: 'error', message: error.message, code: 404})
+  }
+}
+
+export { MakePayment, AllPayments, DeletePayment };

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MakePaymentComponent } from './make-payment.component';
 import { PaymentService } from 'src/app/services/payment.service';
 import * as moment from 'moment';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-payments',
@@ -49,8 +50,40 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
             this.dataSource.data = res.data;
         });
     }
-    triggerDeleteAccount(data: any) {
-        console.log('data to delete', data);
+    triggerDeletePayment(_id: any) {
+        Swal.fire({
+            title: 'Delete Payment - Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+                this.deletePayment(_id);
+            } else {
+                Swal.fire('Cancelled', 'Your data is safe :)', 'error');
+            }
+        });
+    }
+
+    deletePayment(_id: string) {
+        this.payment.deletePayment({ _id }).subscribe(
+            async (resp: any) => {
+                console.log('Delete', resp);
+                Swal.fire({ text: resp.message, icon: 'success' }).then((result) => {
+                    this.fetchAllPayments();
+                });
+            },
+            (err) => {
+                Swal.fire({
+                    title: `${err.error.status} - ${err.error.code}`,
+                    text: `${err.error.message}`,
+                });
+            },
+        );
     }
     openPaymentDialog() {
         const dialogRef = this.dialog.open(MakePaymentComponent, {
@@ -64,7 +97,7 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
         });
     }
 
-    formatDate (date: any) {
-        return moment(date).format("dddd, Do MMMM, YYYY @ h:mm:ss a")
+    formatDate(date: any) {
+        return moment(date).format('dddd, Do MMMM, YYYY @ h:mm:ss a');
     }
 }

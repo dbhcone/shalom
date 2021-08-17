@@ -5,19 +5,20 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Payment } from '../interfaces/payments.interface';
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class PaymentService {
+    constructor(private client: Client) {}
 
-  constructor(private client: Client) { }
+    getAllPayments() {
+        return this.client.POST(`${Payments.all}`);
+    }
 
-  getAllPayments() {
-    return this.client.POST(`${Payments.all}`)
-  }
+    makePayment(payment: Payment) {
+        return this.client.POST(`${Payments.add}`, payment);
+    }
 
-  makePayment(payment: Payment){
-    return this.client.POST(`${Payments.add}`, payment)
-  }
-
-  
+    deletePayment(data: any) {
+        return this.client.POST(`${Payments.delete}`, data);
+    }
 }
