@@ -35,7 +35,7 @@ const MakePayment = async (req: Request, res: Response) => {
 
 const AllPayments = async (req: Request, res: Response) => {
   try {
-    let data = await Dues.find({});
+    let data = await Dues.find({}).populate("payer");
     res.status(200).json({ message: 'Fetching all dues successfull', status: 'ok', code: 200, data });
   } catch (error) {
     console.log('Error fetching all payments', error.message);
