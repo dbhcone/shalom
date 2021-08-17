@@ -13,6 +13,7 @@ import { UserdashboardComponent } from './components/userdashboard/userdashboard
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', redirectTo: 'login' },
   {
     path: 'admin',
     component: AdminComponent,
