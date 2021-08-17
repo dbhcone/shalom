@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MakePaymentComponent } from './make-payment.component';
 import { PaymentService } from 'src/app/services/payment.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-payments',
@@ -12,7 +13,7 @@ import { PaymentService } from 'src/app/services/payment.service';
     styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit, AfterViewInit {
-    displayedColumns: string[] = ['amount', 'year', 'month', 'date'];
+    displayedColumns: string[] = ['surname', 'firstName', 'otherNames', 'amount', 'year', 'month', 'date', 'delete'];
     dataSource: MatTableDataSource<any>;
 
     @ViewChild(MatPaginator)
@@ -48,6 +49,9 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
             this.dataSource.data = res.data;
         });
     }
+    triggerDeleteAccount(data: any) {
+        console.log('data to delete', data);
+    }
     openPaymentDialog() {
         const dialogRef = this.dialog.open(MakePaymentComponent, {
             width: '500px',
@@ -58,5 +62,9 @@ export class PaymentsComponent implements OnInit, AfterViewInit {
 
             console.log(result);
         });
+    }
+
+    formatDate (date: any) {
+        return moment(date).format("dddd, Do MMMM, YYYY @ h:mm:ss a")
     }
 }

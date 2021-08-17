@@ -11,8 +11,8 @@
         (selectionChange)="onPayerChanged($event)"
         formControlName="payer"
       >
-        <mat-option *ngFor="let member of members" [value]="member._id">{{
-          fullName(member)
+        <mat-option *ngFor="let member of members" [value]="member.accountOwner._id">{{
+          fullName(member.accountOwner)
         }}</mat-option>
       </mat-select>
     </mat-form-field>
