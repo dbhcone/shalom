@@ -43,6 +43,7 @@
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "mat-table-exporter": "^10.2.3",
+    "moment": "^2.29.1",
     "mongoose": "^5.13.1",
     "morgan": "~1.9.1",
     "rxjs": "~6.6.0",
