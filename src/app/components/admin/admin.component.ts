@@ -18,8 +18,6 @@ export class AdminComponent {
     constructor(private breakpointObserver: BreakpointObserver) {}
 
     handleClick(drawer: MatSidenav) {
-        this.isHandset$.subscribe((ishandset) => {
-            ishandset && drawer.toggle();
-        });
+        drawer.close();
     }
 }
