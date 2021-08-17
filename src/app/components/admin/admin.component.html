@@ -3,7 +3,6 @@
         #drawer
         class="sidenav"
         fixedInViewport
-        (click)="handleClick(drawer)"
         [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
         [mode]="(isHandset$ | async) ? 'over' : 'side'"
         [opened]="(isHandset$ | async) === false"

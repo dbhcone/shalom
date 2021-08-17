@@ -18,6 +18,6 @@ export class AdminComponent {
     constructor(private breakpointObserver: BreakpointObserver) {}
 
     handleClick(drawer: MatSidenav) {
-        drawer.close();
+        // drawer.close();
     }
 }
