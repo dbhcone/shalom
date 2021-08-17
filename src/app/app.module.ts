@@ -32,6 +32,7 @@ import { MakePaymentComponent } from './components/admin/payments/make-payment.c
     ReportsComponent,
     PaymentsComponent,
     MakePaymentComponent,
+    AdmindashboardComponent
   ],
   imports: [
     BrowserModule,
