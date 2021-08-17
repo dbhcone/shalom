@@ -7,15 +7,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { UserdashboardComponent } from './userdashboard.component';
+import { UserComponent } from './user.component';
 
-describe('UserdashboardComponent', () => {
-  let component: UserdashboardComponent;
-  let fixture: ComponentFixture<UserdashboardComponent>;
+describe('UserComponent', () => {
+  let component: UserComponent;
+  let fixture: ComponentFixture<UserComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [UserdashboardComponent],
+      declarations: [UserComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -29,7 +29,7 @@ describe('UserdashboardComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserdashboardComponent);
+    fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

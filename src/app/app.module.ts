@@ -9,23 +9,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './components/admin/admin.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MembersComponent } from './components/admin/members/members.component';
-import { UserdashboardComponent } from './components/userdashboard/userdashboard.component';
-import { PaymentHistoryComponent } from './components/userdashboard/payment-history/payment-history.component';
+import { UserComponent } from './components/user/user.component';
+import { PaymentHistoryComponent } from './components/user/payment-history/payment-history.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { AngularMaterialModule } from './angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AddMemberComponent } from './components/admin/members/add-member.component';
-import { ProfileComponent } from './components/userdashboard/profile/profile.component';
-import { ReportsComponent } from './components/userdashboard/reports/reports.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { ReportsComponent } from './components/user/reports/reports.component';
 import { PaymentsComponent } from './components/admin/payments/payments.component';
 import { MakePaymentComponent } from './components/admin/payments/make-payment.component';
+import { AdmindashboardComponent } from './components/admin/dashboard/admindashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminComponent,
     MembersComponent,
-    UserdashboardComponent,
+    UserComponent,
     PaymentHistoryComponent,
     AddMemberComponent,
     ProfileComponent,

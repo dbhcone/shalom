@@ -5,10 +5,10 @@ import { AdmindashboardComponent } from './components/admin/dashboard/admindashb
 import { MembersComponent } from './components/admin/members/members.component';
 import { PaymentsComponent } from './components/admin/payments/payments.component';
 import { LoginComponent } from './components/login/login.component';
-import { PaymentHistoryComponent } from './components/userdashboard/payment-history/payment-history.component';
-import { ProfileComponent } from './components/userdashboard/profile/profile.component';
-import { ReportsComponent } from './components/userdashboard/reports/reports.component';
-import { UserdashboardComponent } from './components/userdashboard/userdashboard.component';
+import { PaymentHistoryComponent } from './components/user/payment-history/payment-history.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { ReportsComponent } from './components/user/reports/reports.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -24,8 +24,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'my-dashboard',
-    component: UserdashboardComponent,
+    path: 'user',
+    component: UserComponent,
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'payment-history', component: PaymentHistoryComponent },
