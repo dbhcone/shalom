@@ -14,8 +14,6 @@ body {
     background: -moz-linear-gradient(90deg, hsla(54, 56%, 66%, 1) 0%, hsla(261, 84%, 45%, 1) 100%);
 
     background: -webkit-linear-gradient(90deg, hsla(54, 56%, 66%, 1) 0%, hsla(261, 84%, 45%, 1) 100%);
-
-    
 }
 
 .small-text {
@@ -27,4 +25,15 @@ body {
 }
 .large-text {
     font-size: 30px;
+}
+
+th {
+    background-color: rgb(216, 143, 250);
+}
+.mat-row:nth-child(even) {
+    background-color: rgb(248, 248, 255);
+}
+
+.mat-row:nth-child(odd) {
+    background-color: #ffffff;
 }
