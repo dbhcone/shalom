@@ -19,3 +19,9 @@ export interface ICredentials {
 export interface IUser extends ICredentials {
     role: string;
 }
+
+export interface IProfile {
+    facebookHandle?: string;
+    instagramHandle?: string;
+    twitterHandle?: string;
+}

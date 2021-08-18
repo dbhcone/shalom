@@ -4,14 +4,18 @@ const Auth = {
     users: '/auth/users',
     members: '/auth/members',
     updateMember: '/auth/updateMember',
-    deleteUser: '/auth/deleteUser'
-}
+    deleteUser: '/auth/deleteUser',
+};
 
 const Payments = {
     all: '/dues/all',
     some: '/payments',
     add: '/dues/add',
-    delete: '/dues/delete'
-}
+    delete: '/dues/delete',
+};
 
-export {Auth, Payments};
+const User = {
+    find: '/user',
+};
+
+export { Auth, Payments, User };

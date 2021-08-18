@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { Types } from 'mongoose';
 import { generateToken } from '../helpers/functions/auth.helpers';
 import { IAccount } from '../interfaces/account.interface';
 import { IUser } from '../interfaces/user.interface';
@@ -91,12 +90,6 @@ const Login = async (req: Request, res: Response) => {
     let { username, password, isAdmin } = req.body;
 
     try {
-        // if (!username || !password) {
-        //   return res
-        //     .status(404)
-        //     .json({ error: 'Supply the correct payload to this endpoint' });
-        // }
-
         const validation = await loginValidation.validateAsync(req.body);
         console.log('body', req.body);
 
@@ -134,7 +127,7 @@ const UsersList = async (req: Request, res: Response) => {
 
 const MembersList = async (req: Request, res: Response) => {
     try {
-        let data = await Users.find({}).populate("accountOwner");
+        let data = await Users.find({}).populate('accountOwner');
         return res.status(200).json({
             code: 200,
             message: 'Members list fetched successfully',

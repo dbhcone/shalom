@@ -1,6 +1,4 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Auth } from '../api/endpoints';
 import { IAccount, ICredentials, IUser } from '../interfaces/auth.interface';
 import { Client } from '../utils/client';
@@ -10,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     providedIn: 'root',
 })
 export class AuthService implements OnInit {
-    static client: any;
+
     constructor(private client: Client) {}
 
     ngOnInit(): void {
@@ -27,7 +25,6 @@ export class AuthService implements OnInit {
     getMembersList() {
         return this.client.POST(`${Auth.members}`);
     }
-
     updateMemberDetails(_id: string, account: IAccount) {
         return this.client.POST(`${Auth.updateMember}`, { _id, updateData: account });
     }
@@ -37,11 +34,9 @@ export class AuthService implements OnInit {
     }
 
     setToken(token: string) {
-        // return new Promise((res, rej) => {
-          // }) 
-          const promise = new Promise((resolve, reject) => {
-              localStorage.setItem('access-token', token);
-              resolve("token");
+        const promise = new Promise((resolve, reject) => {
+            localStorage.setItem('access-token', token);
+            resolve('token');
         });
         return promise;
     }
@@ -50,7 +45,7 @@ export class AuthService implements OnInit {
         return localStorage.getItem('access-token');
     }
 
-    data() : IUser {
+    data(): IUser {
         const jwtHelper = new JwtHelperService();
         const token = this.getToken() || undefined;
 
@@ -60,7 +55,7 @@ export class AuthService implements OnInit {
         return decodedToken;
     }
 
-    get isAdmin ()  {
-      return this.data().role === "admin";
+    get isAdmin() {
+        return this.data().role === 'admin';
     }
 }

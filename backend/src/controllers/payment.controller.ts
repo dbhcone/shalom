@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { IDues } from '../interfaces/dues.interface';
 import { duesSchema } from '../validators/payment.validations';
 import Dues from '../models/dues.model';
-import { deleteByIdValidation } from '../validators/shared.validations';
+import { mongoidValidation } from '../validators/shared.validations';
 
 const MakePayment = async (req: Request, res: Response) => {
     const data: IDues = req.body;
@@ -64,7 +64,7 @@ const AllPayments = async (req: Request, res: Response) => {
 const DeletePayment = async (req: Request, res: Response) => {
     const data = req.body;
     try {
-        const validation = await deleteByIdValidation.validateAsync(data);
+        const validation = await mongoidValidation.validateAsync(data);
 
         const due = await Dues.findByIdAndDelete(data._id);
 

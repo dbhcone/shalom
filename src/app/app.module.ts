@@ -20,6 +20,7 @@ import { ReportsComponent } from './components/user/reports/reports.component';
 import { PaymentsComponent } from './components/admin/payments/payments.component';
 import { MakePaymentComponent } from './components/admin/payments/make-payment.component';
 import { AdmindashboardComponent } from './components/admin/dashboard/admindashboard.component';
+import { MembersComponent as SharedMembersComponent } from './components/shared/members/members.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { AdmindashboardComponent } from './components/admin/dashboard/admindashb
     ReportsComponent,
     PaymentsComponent,
     MakePaymentComponent,
-    AdmindashboardComponent
+    AdmindashboardComponent,
+    SharedMembersComponent
   ],
   imports: [
     BrowserModule,
