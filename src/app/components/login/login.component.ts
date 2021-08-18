@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
                      */
                     this.authService.setToken(resp.token).then((res) => {
                         console.log('after login promise', res);
-                        this.redirect.to(this.authService.isAdmin ? 'admin' : 'my-dashboard');
+                        this.redirect.to(this.authService.isAdmin ? 'admin' : 'user');
                     });
                 });
             },
