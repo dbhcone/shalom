@@ -17,19 +17,20 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'logout', redirectTo: 'login' },
     //#endregion
-    
+
     //#region Admin routes
     {
         path: 'admin',
         component: AdminComponent,
         children: [
+            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'members', component: MembersComponent },
             { path: 'dashboard', component: AdmindashboardComponent },
             { path: 'payments', component: PaymentsComponent },
         ],
     },
     //#endregion
-    
+
     //#region User routes
     {
         path: 'user',
