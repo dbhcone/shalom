@@ -21,4 +21,12 @@ export class PaymentService {
     deletePayment(data: any) {
         return this.client.POST(`${Payments.delete}`, data);
     }
+
+    /**
+     * This years payments grouped in months
+     * @returns 
+     */
+     getPaymentsStats () {
+        return this.client.GET(`${Payments.paymentsstats}`)
+    }
 }

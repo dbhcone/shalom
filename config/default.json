@@ -1,5 +1,8 @@
 {
     "CONN_STR_LOC": "mongodb://localhost:27017/shalomosa",
     "CONN_STR": "mongodb+srv://user-shalom-osa:BRsXFm5klPIqoKYQ@cluster-shalom-osa.vhqtf.mongodb.net/shalomosa?retryWrites=true&w=majority",
-    "JWT_SECRET": "TheQu1ckBrownFoxJumped0verTheL@zyDog$"
+    "JWT_SECRET": "TheQu1ckBrownFoxJumped0verTheL@zyDog$",
+    "DROPBOX_APP_KEY": "cny2hrkazp6o1a1",
+    "DROPBOX_APP_SECRET": "05plvkx4hp6ldx3",
+    "DROPBOX_ACCESS_TOKEN": "FsIPe8mH3isAAAAAAAAAAfmo84Sc0HtisFf5nxu9SyIRnz96GYJ0B1cXvG9XFljM"
 }

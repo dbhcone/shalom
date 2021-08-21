@@ -195,4 +195,31 @@ const UpdateMember = async (req: Request, res: Response) => {
         return res.status(404).json({ message: error.message, code: 404, status: 'error' });
     }
 };
-export { Signup, Login, UsersList, MembersList, DeleteUser, UpdateMember };
+
+const MembersStats = async (req: Request, res: Response) => {
+    try {
+        const males = await Account.countDocuments({ gender: 'M' });
+        const females = await Account.countDocuments({ gender: 'F' });
+
+        /**
+         * we are not summing up males and female for `total` because we are
+         * making way for members in the group who may **NOT** be in either of 
+         * the two categories.
+         */
+        const total = await Account.countDocuments();
+        const occupations = await Account.aggregate([
+            { $group: { _id: { $toLower: '$occupation' }, num: { $sum: 1 } } },
+        ]);
+        return res
+            .status(200)
+            .json({
+                message: 'Data fetched successfully',
+                status: 'ok',
+                code: 200,
+                data: { males, females, total, occupations },
+            });
+    } catch (error) {
+        return res.status(404).json({ message: error.message, status: 'error', code: 404 });
+    }
+};
+export { Signup, Login, UsersList, MembersList, DeleteUser, UpdateMember, MembersStats };

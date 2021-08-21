@@ -21,34 +21,36 @@ import { PaymentsComponent } from './components/admin/payments/payments.componen
 import { MakePaymentComponent } from './components/admin/payments/make-payment.component';
 import { AdmindashboardComponent } from './components/admin/dashboard/admindashboard.component';
 import { MembersComponent as SharedMembersComponent } from './components/shared/members/members.component';
+import { ChartModule } from 'angular2-chartjs';
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    AdminComponent,
-    MembersComponent,
-    UserComponent,
-    PaymentHistoryComponent,
-    AddMemberComponent,
-    ProfileComponent,
-    ReportsComponent,
-    PaymentsComponent,
-    MakePaymentComponent,
-    AdmindashboardComponent,
-    SharedMembersComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    MatTableExporterModule,
-    AngularMaterialModule,
-    HttpClientModule,
-  ],
-  providers: [FormsModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        AdminComponent,
+        MembersComponent,
+        UserComponent,
+        PaymentHistoryComponent,
+        AddMemberComponent,
+        ProfileComponent,
+        ReportsComponent,
+        PaymentsComponent,
+        MakePaymentComponent,
+        AdmindashboardComponent,
+        SharedMembersComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        MatTableExporterModule,
+        AngularMaterialModule,
+        HttpClientModule,
+        ChartModule,
+    ],
+    providers: [FormsModule],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

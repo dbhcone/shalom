@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Auth } from '../api/endpoints';
+import { Auth, Payments } from '../api/endpoints';
 import { IAccount, ICredentials, IUser } from '../interfaces/auth.interface';
 import { Client } from '../utils/client';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -58,4 +58,10 @@ export class AuthService implements OnInit {
     get isAdmin() {
         return this.data().role === 'admin';
     }
+
+    getMembersStats () {
+        return this.client.GET(`${Auth.membersstats}`)
+    }
+
+    
 }

@@ -77,4 +77,31 @@ const DeletePayment = async (req: Request, res: Response) => {
     }
 };
 
-export { MakePayment, AllPayments, DeletePayment };
+const PaymentsStats = async (req: Request, res: Response) => {
+    try {
+        const currentYear = new Date().getFullYear();
+        console.log('year', currentYear);
+        const payments = await Dues.aggregate([
+            // matching only the current year
+            { $match: { year: currentYear } },
+
+            // group based on the month
+            {
+                $group: {
+                    _id: '$month',
+                    amount: { $sum: '$amount' },
+                    count: { $sum: 1 },
+                },
+            },
+        ]);
+        return res.status(200).json({
+            message: 'Data fetched successfully',
+            status: 'ok',
+            code: 200,
+            data: { year: currentYear, payments },
+        });
+    } catch (error) {
+        return res.status(404).json({ message: error.message, status: 'error', code: 404 });
+    }
+};
+export { MakePayment, AllPayments, DeletePayment, PaymentsStats };

@@ -4,26 +4,26 @@ import { environment as env, environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class Client {
-  // httpe: HttpClient;
+    // httpe: HttpClient;
 
-  constructor(private http: HttpClient) {}
-  headers = new HttpHeaders({
-    Authorization: `Bearer ${localStorage.getItem('user-token')}`,
-    'Content-Type': 'application/json',
-  });
-
-  GET(endpoint: string)  {
-    return this.http.get<Record<string, unknown>>(`${environment.apiroot}${endpoint}`, {
-      headers: this.headers,
+    constructor(private http: HttpClient) {}
+    headers = new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('user-token')}`,
+        'Content-Type': 'application/json',
     });
-  }
 
-  POST(endpoint: string, data?: any)  {
-    return this.http.post<Record<string, unknown>>(`${environment.apiroot}${endpoint}`, data, {
-      headers: this.headers,
-    });
-  }
+    GET(endpoint: string, headers?: any) {
+        return this.http.get<Record<string, unknown>>(`${environment.apiroot}${endpoint}`, {
+            headers: headers || this.headers,
+        });
+    }
+
+    POST(endpoint: string, data?: any, headers?: any) {
+        return this.http.post<Record<string, unknown>>(`${environment.apiroot}${endpoint}`, data, {
+            headers: headers || this.headers,
+        });
+    }
 }

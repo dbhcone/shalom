@@ -12,7 +12,7 @@
                 <img
                     align="left"
                     class="fb-image-profile thumbnail img-thumbnail"
-                    src="http://lorempixel.com/180/180/people/9/"
+                    src="{{ userdata?.profilePhoto?.path }}"
                     alt="Profile image example"
                 />
                 <div class="fb-profile-text">
@@ -23,26 +23,13 @@
         </div>
         <!-- #region Grid layout to update user details -->
         <div class="container">
-            <form>
-                <mat-form-field>
-                    <mat-label>Surname:</mat-label>
-                    <input matInput type="text" placeholder="Surname of member" />
-                </mat-form-field>
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                <label>Add Image</label>
+                <input type="file" style="display: none" (change)="onFileSelected($event)" #fileInput />
+                <img *ngIf="imageSrc" [src]="imageSrc" style="height: 350px; width: 350px" />
+                <button type="button" class="upload" (click)="fileInput.click()">Select profile photo</button>
 
-                <mat-form-field>
-                    <mat-label>Surname:</mat-label>
-                    <input matInput type="text" placeholder="Surname of member" />
-                </mat-form-field>
-
-                <mat-form-field>
-                    <mat-label>Surname:</mat-label>
-                    <input matInput type="text" placeholder="Surname of member" />
-                </mat-form-field>
-
-                <mat-form-field>
-                    <mat-label>Surname:</mat-label>
-                    <input matInput type="text" placeholder="Surname of member" />
-                </mat-form-field>
+                <button type="submit" mat-raised-button color="primary">Upload</button>
             </form>
         </div>
         <!-- #endregion -->
